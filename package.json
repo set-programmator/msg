@@ -3,25 +3,27 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:ui:headed": "cross-env OUTPUT_DIR=$UI_OUTPUT_DIR codeceptjs run --config ./codeceptjs-tests/codecept.conf.ts --plugins allure",
-    "test:ui:headless": "cross-env HEADLESS=true OUTPUT_DIR=$UI_OUTPUT_DIR codeceptjs run --config ./codeceptjs-tests/codecept.conf.ts --plugins allure",
+    "test:ui:headed": "cross-env OUTPUT_DIR=./codeceptjs-tests/output codeceptjs run --config ./codeceptjs-tests/codecept.conf.ts --plugins allure",
+    "test:ui:headless": "cross-env HEADLESS=true OUTPUT_DIR=./codeceptjs-tests/output codeceptjs run --config ./codeceptjs-tests/codecept.conf.ts --plugins allure",
 
     "test:ui:headed:all": "npm run test:ui:headed && npm run generate:ui-report && npm run open:ui-report",
     "test:ui:headless:all": "npm run test:ui:headless && npm run generate:ui-report && npm run open:ui-report",
 
-    "generate:ui-report": "cross-env OUTPUT_DIR=$UI_OUTPUT_DIR ts-node ./scripts/generateReport.ts",
-    "open:ui-report": "cross-env ts-node ./scripts/openLatestReport.ts"
-,
+    "generate:ui-report": "cross-env OUTPUT_DIR=./codeceptjs-tests/output ts-node ./scripts/generateReport.ts",
+    "open:ui-report": "cross-env OUTPUT_DIR=./codeceptjs-tests/output ts-node ./scripts/openLatestReport.ts",
+    "list-reports-ui": "cross-env OUTPUT_DIR=./codeceptjs-tests/output ts-node ./scripts/listReports.ts",
+    "open-report-interactive-ui": "cross-env OUTPUT_DIR=./codeceptjs-tests/output ts-node ./scripts/interactiveOpenReport.ts",
 
-    "test:api": "cross-env OUTPUT_DIR=$API_OUTPUT_DIR codeceptjs run --config ./api-tests/api.conf.ts --plugins allure",
-    "generate:api-report": "cross-env OUTPUT_DIR=$API_OUTPUT_DIR ts-node ./scripts/generateReport.ts",
-    "open:api-report": "allure open $API_OUTPUT_DIR/allure-report",
+    "test:api:headed": "cross-env OUTPUT_DIR=./api-tests/output codeceptjs run --features --config ./api-tests/codecept.conf.ts --plugins allure",
+    "test:api:headless": "cross-env HEADLESS=true OUTPUT_DIR=./api-tests/output codeceptjs run --features --config ./api-tests/codecept.conf.ts --plugins allure",
 
-    "list-reports-ui": "cross-env OUTPUT_DIR=$UI_OUTPUT_DIR ts-node ./scripts/listReports.ts",
-    "open-report-interactive-ui": "cross-env OUTPUT_DIR=$UI_OUTPUT_DIR ts-node ./scripts/interactiveOpenReport.ts",
+    "test:api:headed:all": "npm run test:api:headed && npm run generate:api-report && npm run open:api-report",
+    "test:api:headless:all": "npm run test:api:headless && npm run generate:api-report && npm run open:api-report",
 
-    "list-reports-api": "cross-env OUTPUT_DIR=$API_OUTPUT_DIR ts-node ./scripts/listReports.ts",
-    "open-report-interactive-api": "cross-env OUTPUT_DIR=$API_OUTPUT_DIR ts-node ./scripts/interactiveOpenReport.ts"
+    "generate:api-report": "cross-env OUTPUT_DIR=./api-tests/output ts-node ./scripts/generateReport.ts",
+    "open:api-report": "cross-env OUTPUT_DIR=./api-tests/output ts-node ./scripts/openLatestReport.ts",
+    "list-reports-api": "cross-env OUTPUT_DIR=./api-tests/output ts-node ./scripts/listReports.ts",
+    "open-report-interactive-api": "cross-env OUTPUT_DIR=./api-tests/output ts-node ./scripts/interactiveOpenReport.ts"
   },
   "keywords": [],
   "author": "",

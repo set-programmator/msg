@@ -48,5 +48,5 @@ export const config = {
     `junit:${path.join(outputDir, 'report.xml')}`,
   ],
 
-  name: 'codecept-playwright-bdd',
+  name: 'msg-automation-exercise',
 };

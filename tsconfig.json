@@ -1,0 +1,35 @@
+{
+  "ts-node": {
+    "files": true
+  },
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "types": ["codeceptjs", "node"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es2018",
+      "DOM"
+    ],
+    "strictNullChecks": false,
+    "declaration": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noImplicitAny": false, // temporarily disable to reduce errors, or add proper types
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "outDir": "./dist"
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+  ],
+  "include": [
+    "codeceptjs-tests/steps/**/*.ts",
+    "**/*.ts",  
+    "steps.d.ts", 
+    "codeceptjs-tests/codecept.conf.ts/codecept.conf.ts"  
+  ]
+}
